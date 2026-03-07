@@ -10,4 +10,8 @@ std::vector<double> log_returnshistorical(const std::vector<double>& prices);
 //sliding-window log return (uses deque, last two prices only)
 double log_returns(const std::deque<double>& prices_window);
 
+//compute volatility/standard deviation
+double volatility(const std::deque<double>& returns_window);
+
+
 #endif

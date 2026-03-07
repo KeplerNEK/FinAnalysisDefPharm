@@ -38,3 +38,23 @@ double log_returns(const deque<double>& prices_window) //prices from window pass
     return log(curr/prev);
 }
 
+double volatility(const deque<double>&returns_window)
+{
+    size_t n = returns_window.size(); //enough data?
+    if(n<2)
+    return 0;
+    // compute mean
+    double mean = 0;
+    for (size_t i = 0; i < n; i++)
+    mean += returns_window[i];
+    mean /= n;
+    // compute sum of squared deviations
+    double sqrt_sum =0;
+    for (size_t i = 0; i < n; i++) 
+    {
+       double r = returns_window[i];
+       sqrt_sum += (r - mean) * (r - mean);
+    }
+    // return standard deviation/volatility
+    return sqrt(sqrt_sum/(n-1));
+}

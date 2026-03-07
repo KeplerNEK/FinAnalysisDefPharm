@@ -58,3 +58,27 @@ double volatility(const deque<double>&returns_window)
     // return standard deviation/volatility
     return sqrt(sqrt_sum/(n-1));
 }
+//mean return for sharpe ratio
+double mean_return(const deque<double>&returns_window)
+{
+    size_t n=returns_window.size();
+    if(n==0)
+    return 0;
+
+    double sum=0;
+    for(size_t i=0;i<n;i++)
+     sum+=returns_window[i];
+
+    return sum/n;
+}
+//sharpe ratio. using risk free rate = 0 for simplicity 
+double sharpe_ratio(const deque<double>& returns_window, double risk_free_rate)
+{
+    double avg_return = mean_return(returns_window);
+    double vol = volatility(returns_window);
+
+    if(vol==0) //no division by zero
+    return 0;
+
+    return(avg_return-risk_free_rate)/vol;
+}

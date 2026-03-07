@@ -13,5 +13,10 @@ double log_returns(const std::deque<double>& prices_window);
 //compute volatility/standard deviation
 double volatility(const std::deque<double>& returns_window);
 
+//mean return
+double mean_return(const std::deque<double>&returns_window);
+
+//sharpe ratio
+double sharpe_ratio(const std::deque<double>& returns_window, double risk_free_rate = 0.0);
 
 #endif

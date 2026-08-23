@@ -6,6 +6,13 @@
 using namespace std;
 
 
+#include <pybind11/pybind11.h>
+#include <pybind11/stl.h> 
+namespace py = pybind11;
+
+
+
+
 vector<double> log_returnshistorical(const vector<double>& prices) //passing prices by reference
 {
     vector<double> returns;
@@ -81,4 +88,12 @@ double sharpe_ratio(const deque<double>& returns_window, double risk_free_rate)
     return 0;
 
     return(avg_return-risk_free_rate)/vol;
+}
+
+PYBIND11_MODULE(quantmath, m) {
+    m.def("log_returnshistorical", &log_returnshistorical);
+    m.def("log_returns", &log_returns);
+    m.def("volatility", &volatility);
+    m.def("mean_return", &mean_return);
+    m.def("sharpe_ratio", &sharpe_ratio);
 }

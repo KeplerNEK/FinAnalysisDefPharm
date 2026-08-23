@@ -1,4 +1,17 @@
 from websocket import WebSocketApp, enableTrace
+import quantmath
+from collection import deque
+import json
+
+#setup rolling windows for max 100 latest prices
+market_data = {
+    "AAPL": deque(maxlen=100),            
+    "AMZN": deque(maxlen=100),            
+    "BINANCE:BTCUSDT": deque(maxlen=100), 
+    "IC MARKETS:1": deque(maxlen=100)
+}
+
+
 
 def on_message(ws, message):
     print(message)

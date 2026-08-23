@@ -1,0 +1,4 @@
+# python setup.py build_ext --inplace
+
+
+# run this after putting those 4 files in the same folder (open terminal, navigate to that folder and run)
